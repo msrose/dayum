@@ -2,10 +2,12 @@
   "name": "dayum",
   "version": "0.0.1",
   "description": "Two-syllable damn generator",
-  "main": "index.js",
+  "main": "dayum.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "browserify -o dayum.js -s dayum -t [ babelify --presets [ es2015 ] ] index.js",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "dayum",
@@ -14,6 +16,9 @@
   "author": "Michael Rose",
   "license": "MIT",
   "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
     "eslint": "^3.11.1",
     "jest": "^17.0.3"
   }
