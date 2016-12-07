@@ -7,4 +7,8 @@ const dayum = (count = 1) => {
   return  d;
 };
 
+dayum.random = (max = 100) => {
+  return dayum(Math.floor(Math.random() * max) + 1);
+};
+
 module.exports = dayum;
