@@ -18,8 +18,8 @@ const dayumRegex = /^d(a+)yum$/;
 dayum.dayumify = (object, count = 0) => {
   if(count === 0 && Proxy) {
     return new Proxy(object, {
-      get: (obj, prop, value) => {
-        const result = dayumRegex.exec(String(prop))
+      get: (obj, prop) => {
+        const result = dayumRegex.exec(String(prop));
         if(result) {
           const [, count] = result;
           return dayum.random.bind(count);

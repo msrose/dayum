@@ -1,3 +1,5 @@
+'use strict';
+
 const dayum = require('..');
 
 describe('dayum', () => {
