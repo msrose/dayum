@@ -11,7 +11,9 @@ Install:
 Use it:
 
     const dayum = require('dayum');
-    dayum.daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaayum();
+    dayum(10); // 'daaaaaaaaaayum'
+    dayum.random(5, 15); // 'daaaaaaayum'
+    dayum.daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaayum(); // random dayum based on the number of "a"s
 
 If you have proxies in your environment, the number of "a"s doesn't matter. The more "a"s, the bigger the dayum, gurl.
 
@@ -57,11 +59,11 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 #### dayumify
 
 Adds all possible dayum methods to the given object.
-If the environment supports proxies (and no `count is specified`),
-you'll be able to call any /da+yum/ method. Any dayum method returns a random two-syllable
+If the environment supports proxies (and no `count` is specified),
+you'll be able to call any `/da+yum/` method. Any dayum method returns a random two-syllable
 dayum based on the number of "a"s in the method.
-If there are no proxies (and no `count is specified`),
-you'll only be able to call /da{1,50}yum/ by default. :'(
+If there are no proxies (and no `count` is specified),
+you'll only be able to call `/da{1,50}yum/` by default. :'(
 
 **Parameters**
 
