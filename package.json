@@ -1,6 +1,6 @@
 {
   "name": "dayum",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Two-syllable damn generator",
   "main": "dayum.js",
   "scripts": {
