@@ -22,6 +22,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "prefer-const": "error"
     }
 };
