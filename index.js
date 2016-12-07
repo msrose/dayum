@@ -21,8 +21,8 @@ dayum.dayumify = (object, count = 0) => {
       get: (obj, prop) => {
         const result = dayumRegex.exec(String(prop));
         if(result) {
-          const [, count] = result;
-          return dayum.random.bind(count);
+          const [, allAs] = result;
+          return dayum.random.bind(dayum, allAs.length);
         }
         return obj[prop];
       }
@@ -33,7 +33,7 @@ dayum.dayumify = (object, count = 0) => {
     }
     for(let i = 1; i <= count; i++) {
       const tsd = dayum(i);
-      object[tsd] = dayum.random.bind(null, i);
+      object[tsd] = dayum.random.bind(dayum, i);
     }
     return object;
   }
