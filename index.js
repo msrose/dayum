@@ -1,3 +1,8 @@
+/**
+ * @author Michael Rose
+ * @license https://github.com/msrose/dayum/blob/master/LICENSE
+ */
+
 'use strict';
 
 /**
