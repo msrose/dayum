@@ -1,5 +1,7 @@
 # Dayum
 
+[![Build Status](https://travis-ci.org/msrose/dayum.svg?branch=master)](https://travis-ci.org/msrose/dayum)
+
 ![Lily's two-syllable damn](http://25.media.tumblr.com/tumblr_lys6fkVfhK1qzfp7bo1_500.png)
 
 Now, you can get a two-syllable damn in all of your JavaScript projects.
