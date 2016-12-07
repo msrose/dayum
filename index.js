@@ -9,8 +9,9 @@ let dayum = (count = 1) => {
   return tsd;
 };
 
-dayum.random = (max = 100) => {
-  return dayum(Math.floor(Math.random() * max) + 1);
+dayum.random = (min = 100, max = min) => {
+  if(min >= max) min = 1;
+  return dayum(Math.max(Math.floor(Math.random() * (max - min + 1)) + min, 1));
 };
 
 const dayumRegex = /^d(a+)yum$/;
@@ -21,8 +22,10 @@ dayum.dayumify = (object, count = 0) => {
       get: (obj, prop) => {
         const result = dayumRegex.exec(String(prop));
         if(result) {
-          const [, allAs] = result;
-          return dayum.random.bind(dayum, allAs.length);
+          const [, allAys] = result;
+          const allAysCount = allAys.length;
+          const halfAllAys = Math.max(Math.floor(allAysCount / 2), 1);
+          return dayum.random.bind(dayum, allAysCount - halfAllAys, allAysCount + halfAllAys);
         }
         return obj[prop];
       }
