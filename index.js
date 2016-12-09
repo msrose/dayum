@@ -55,7 +55,7 @@ const dayumRegex = /^d(a+)yum$/;
  * x.daaaaaaaaaayum(); // equivalent to dayum.random(5, 15)
  */
 dayum.dayumify = (object, count = 0) => {
-  if(count === 0 && Proxy) {
+  if(count === 0 && typeof Proxy !== 'undefined') {
     return new Proxy(object, {
       get: (obj, prop) => {
         const result = dayumRegex.exec(String(prop));
