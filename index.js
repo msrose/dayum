@@ -66,7 +66,7 @@ dayum.dayumify = (object, count = 0) => {
         const result = dayumRegex.exec(String(prop));
         if(result) {
           const [, allAys] = result;
-          return createRandomDayumRange(allAys.length)
+          return createRandomDayumRange(allAys.length);
         }
         return obj[prop];
       }
