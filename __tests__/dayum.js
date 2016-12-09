@@ -32,7 +32,7 @@ describe('dayum', () => {
     it('adds all the dayum methods to a given object', () => {
       const obj = dayum.dayumify({ y: 44 }, 10);
       expect(obj.y).toBe(44);
-      expect(obj.dayum()).toBe('dayum');
+      expect(obj.dayum).toBeInstanceOf(Function);
       expect(obj.daaayum).toBeInstanceOf(Function);
       expect(obj.daaaaaaaaaayum).toBeInstanceOf(Function);
       expect(obj.daaaaaaaaaaayum).toBeUndefined();
