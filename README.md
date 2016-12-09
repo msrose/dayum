@@ -13,10 +13,13 @@ Install:
 
 Use it:
 
-    const dayum = require('dayum');
-    dayum(10); // 'daaaaaaaaaayum'
-    dayum.random(5, 15); // 'daaaaaaayum'
-    dayum.daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaayum(); // random dayum based on the number of "a"s
+```javascript
+const dayum = require('dayum');
+dayum(10); // 'daaaaaaaaaayum'
+dayum.random(5, 15); // 'daaaaaaayum'
+dayum.daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaayum(); // random dayum based on the number of "a"s
+dayum.dayumify({}); // creates an object with all /da+yum/ methods on it
+```
 
 If you have proxies in your environment, the number of "a"s doesn't matter. The more "a"s, the bigger the dayum, gurl.
 
