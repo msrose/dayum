@@ -1,6 +1,6 @@
 'use strict';
 
-const dayum = require('..');
+const dayum = require('../index');
 
 describe('dayum', () => {
   it('generates a two-syllable damn', () => {
@@ -30,7 +30,8 @@ describe('dayum', () => {
 
   describe('dayumify', () => {
     it('adds all the dayum methods to a given object', () => {
-      const obj = dayum.dayumify({}, 10);
+      const obj = dayum.dayumify({ y: 44 }, 10);
+      expect(obj.y).toBe(44);
       expect(obj.dayum()).toBe('dayum');
       expect(obj.daaayum).toBeInstanceOf(Function);
       expect(obj.daaaaaaaaaayum).toBeInstanceOf(Function);
@@ -38,9 +39,19 @@ describe('dayum', () => {
     });
 
     it('returns a dayum Proxy if no count is given', () => {
-      const obj = dayum.dayumify({ x: 23 });
+      const originalObj = { x: 23 };
+      const obj = dayum.dayumify(originalObj);
+      expect(obj).not.toBe(originalObj);
       expect(obj.x).toBe(23);
       expect(obj.daaaaaaaaaaaaaaaaaaaaaayum).toBeInstanceOf(Function);
+    });
+
+    it('returns a reference to a new dayum object', () => {
+      const obj = {};
+      const dayumifiedObject = dayum.dayumify(obj, 10);
+      expect(obj).not.toBe(dayumifiedObject);
+      expect(obj.daaayum).toBeUndefined();
+      expect(dayumifiedObject.daaayum).toBeInstanceOf(Function);
     });
   });
 });

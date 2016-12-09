@@ -38,6 +38,11 @@ dayum.random = (min = 100, max = min) => {
 
 const dayumRegex = /^d(a+)yum$/;
 
+const createRandomDayumRange = (midpoint) => {
+  const variance = Math.max(Math.floor(midpoint / 2), 1);
+  return dayum.random.bind(dayum, midpoint - variance, midpoint + variance);
+};
+
 /**
  * Adds all possible dayum methods to the given object.
  * If the environment supports proxies (and no `count` is specified),
@@ -47,7 +52,7 @@ const dayumRegex = /^d(a+)yum$/;
  * you'll only be able to call `/da{1,50}yum/` by default. :'(
  * @param {object} object The object to dayumify.
  * @param {number} [count=0] The number of dayum methods to add to `object`. 0 indicates all possible methods.
- * @returns {object} The given `object`, dayumified
+ * @returns {object} A shallow copy of the given `object`, dayumified
  * @example
  * const dayum = require('dayum');
  * const x = dayum.dayumify({ prop: 'hi!' });
@@ -61,9 +66,7 @@ dayum.dayumify = (object, count = 0) => {
         const result = dayumRegex.exec(String(prop));
         if(result) {
           const [, allAys] = result;
-          const allAysCount = allAys.length;
-          const halfAllAys = Math.max(Math.floor(allAysCount / 2), 1);
-          return dayum.random.bind(dayum, allAysCount - halfAllAys, allAysCount + halfAllAys);
+          return createRandomDayumRange(allAys.length)
         }
         return obj[prop];
       }
@@ -72,11 +75,16 @@ dayum.dayumify = (object, count = 0) => {
     if(count === 0) {
       count = 50;
     }
-    for(let i = 1; i <= count; i++) {
-      const tsd = dayum(i);
-      object[tsd] = dayum.random.bind(dayum, i);
+    const dayumifiedObject = {};
+    for(const prop in object) {
+      if(Object.prototype.hasOwnProperty.call(object, prop)) {
+        dayumifiedObject[prop] = object[prop];
+      }
     }
-    return object;
+    for(let i = 1; i <= count; i++) {
+      dayumifiedObject[dayum(i)] = createRandomDayumRange(i);
+    }
+    return dayumifiedObject;
   }
 };
 

@@ -88,4 +88,4 @@ x.prop; // 'hi!'
 x.daaaaaaaaaayum(); // equivalent to dayum.random(5, 15)
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The given `object`, dayumified
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** A shallow copy of the given `object`, dayumified
